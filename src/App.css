@@ -1,0 +1,250 @@
+/* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'); /* Agregado Font Awesome */
+
+* {
+  font-family: 'Inter', sans-serif; /* Fuente aplicada en todos los elementos */
+}
+
+body {
+  background-color: #171717;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px); /* Agregado patrón de puntitos */
+  background-size: 20px 20px; /* Ajuste del tamaño de los puntos */
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Animación de resplandor azul */
+@keyframes glow {
+  0% {
+    box-shadow: 0px 0px 10px rgba(0, 162, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0px 0px 20px rgba(0, 162, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0px 0px 10px rgba(0, 162, 255, 0.3);
+  }
+}
+
+/* Animación para el contenedor del juego */
+@keyframes move-up-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor principal del juego */
+.game-container {
+  padding: 20px;
+  border-radius: 50px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f1f1f;
+  box-shadow: 0px 0px 15px rgba(0, 162, 255, 0.6);
+  animation: move-up-down 3s ease-in-out infinite, glow 4s ease-in-out infinite;
+}
+
+/* Botones */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #333333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+button i {
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.1);
+}
+
+button:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+}
+
+/* Tablero de juego */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 300px;
+  height: 300px;
+  justify-items: center;
+  margin-top: 20px;
+  border: none;
+}
+
+/* Cuadrados del tablero */
+.square {
+  background-color: #171717;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #222222;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.square:hover {
+  background-color: #1c1c1c;
+}
+
+/* Color corregido para casillas seleccionadas */
+.square.taken {
+  background-color: #292929; /* Oscurecido */
+  cursor: not-allowed;
+}
+
+/* Botón de reinicio centrado */
+.reset-btn {
+  background-color: #333333;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute; /* Cambio aquí */
+  bottom: 10px; /* Establecer la posición relativa */
+}
+
+.reset-btn i {
+  margin-right: 10px;
+}
+
+.reset-btn:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.1);
+}
+
+/* Mensaje del ganador con fuente más pequeña */
+.winner-message {
+  margin-top: 20px;
+  color: white;
+  font-size: 1rem; /* Reducido */
+  text-align: center;
+  font-weight: bold;
+}
+
+
+/* Estilos del menú */
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #212121;
+  padding: 20px;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  animation: move-up-down 3s ease-in-out infinite, glow 4s ease-in-out infinite;
+}
+
+.menu h2 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.menu button {
+  padding: 10px 20px;
+  background-color: #333333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu button i {
+  margin-right: 8px;
+}
+
+.menu button:hover {
+  background-color: #2a2a2a;
+  transform: scale(1.1);
+}
+
+/* Estilos del footer centrado */
+.footer {
+  position: relative;
+  bottom: 0;
+  margin-top: 30px;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Contenedor para mantener el botón y el mensaje alineados */
+.reset-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espacio entre el botón y el mensaje */
+}
+
+/* Evita que el botón de reinicio se mueva */
+.reset-btn {
+  position: relative;
+}
